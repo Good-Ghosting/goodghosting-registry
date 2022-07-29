@@ -1,8 +1,10 @@
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity 0.8.7;
 
 import "@openzeppelin/contracts/access/AccessControl.sol";
 
 // custom errors
+error DUPLICATE_POOL();
 error INVALID_POOL();
 error NOT_AUTHORIZED();
 
@@ -16,7 +18,9 @@ contract Registry is AccessControl {
     bytes32 public constant OPERATOR_ROLE = keccak256("OPERATOR_ROLE");
 
     // mapping with pool address as the key
-    mapping(address => bool) public pools;
+    mapping(address => bool) public poolStatus;
+
+    address[] public pools;
 
     /**
     @dev checks if a pool address is valid
@@ -30,6 +34,10 @@ contract Registry is AccessControl {
         if (size == 0) {
             revert INVALID_POOL();
         }
+
+        if (poolStatus[_pool]) {
+            revert DUPLICATE_POOL();
+        }
     }
 
     /**
@@ -37,6 +45,7 @@ contract Registry is AccessControl {
     */
     constructor() {
         _setRoleAdmin(ADMIN_ROLE, ADMIN_ROLE);
+        _setRoleAdmin(OPERATOR_ROLE, ADMIN_ROLE);
         _grantRole(ADMIN_ROLE, msg.sender);
     }
 
@@ -48,7 +57,8 @@ contract Registry is AccessControl {
         if (hasRole(ADMIN_ROLE, msg.sender) || hasRole(OPERATOR_ROLE, msg.sender)) {
             for (uint256 i = 0; i < _pools.length; ) {
                 isValid(_pools[i]);
-                pools[_pools[i]] = true;
+                pools.push(_pools[i]);
+                poolStatus[_pools[i]] = true;
                 emit LOG_NEW_POOL(msg.sender, _pools[i]);
                 unchecked {
                     ++i;
@@ -57,23 +67,5 @@ contract Registry is AccessControl {
         } else {
             revert NOT_AUTHORIZED();
         }
-    }
-
-    /**
-    @dev Grant a operator role
-    @param _operator addresses of the operator
-    */
-    function addOperator(address _operator) external {
-        // can only be granted by the admin
-        grantRole(OPERATOR_ROLE, _operator);
-    }
-
-    /**
-    @dev Revoke a operator role
-    @param _operator addresses of the operator
-    */
-    function removeOperator(address _operator) external {
-        // can only be revoked by the admin
-        revokeRole(OPERATOR_ROLE, _operator);
     }
 }
