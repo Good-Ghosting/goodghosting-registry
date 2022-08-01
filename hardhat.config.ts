@@ -89,6 +89,14 @@ const config: HardhatUserConfig = {
     optimism: getChainConfig("optimism-mainnet"),
     "polygon-mainnet": getChainConfig("polygon-mainnet"),
     "polygon-mumbai": getChainConfig("polygon-mumbai"),
+    celo: {
+      url: "https://forno.celo.org",
+      accounts: {
+        mnemonic: process.env.MNEMONIC,
+        path: "m/44'/52752'/0'/0",
+      },
+      chainId: 42220,
+    },
     rinkeby: getChainConfig("rinkeby"),
   },
   paths: {
