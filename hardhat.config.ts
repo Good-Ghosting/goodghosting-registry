@@ -93,7 +93,6 @@ const config: HardhatUserConfig = {
       url: "https://forno.celo.org",
       accounts: {
         mnemonic: process.env.MNEMONIC,
-        path: "m/44'/52752'/0'/0",
       },
       chainId: 42220,
     },
