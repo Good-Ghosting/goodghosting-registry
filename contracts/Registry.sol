@@ -7,6 +7,7 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
 error DUPLICATE_POOL();
 error INVALID_POOL();
 error NOT_AUTHORIZED();
+error POOL_DOES_NOT_EXIST();
 
 /**
 @notice Registry Contract to keep a track of all goodghosting contracts.
@@ -64,6 +65,29 @@ contract Registry is AccessControl {
                     ++i;
                 }
             }
+        } else {
+            revert NOT_AUTHORIZED();
+        }
+    }
+
+    /**
+    @dev Remove a pool from the registry
+    @param _pool address of the pool to be removed
+    */
+    function removeContract(address _pool) external {
+        if (hasRole(ADMIN_ROLE, msg.sender)) {
+            if (!poolStatus[_pool]) {
+                revert POOL_DOES_NOT_EXIST();
+            }
+            for (uint256 i = 0; i < pools.length; ) {
+                if (pools[i] == _pool) {
+                    pools[i] = address(0);
+                }
+                unchecked {
+                    ++i;
+                }
+            }
+            poolStatus[_pool] = false;
         } else {
             revert NOT_AUTHORIZED();
         }
