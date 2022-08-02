@@ -45,4 +45,38 @@ describe("Registry Tests", () => {
     assert(status);
     await expect(result).to.emit(registryInstance, "LOG_NEW_POOL").withArgs(deployer.address, mockPool.address);
   });
+
+  it("operator is able to add a contract to the registry", async () => {
+    const [, user] = await ethers.getSigners();
+    const operatorRole = await registryInstance.OPERATOR_ROLE();
+    await registryInstance.grantRole(operatorRole, user.address);
+    const result = await registryInstance.connect(user).addContract([mockPool.address]);
+    const status = await registryInstance.poolStatus(mockPool.address);
+    assert(status);
+    await expect(result).to.emit(registryInstance, "LOG_NEW_POOL").withArgs(user.address, mockPool.address);
+  });
+
+  it("reverts if a random user tries to remove a contract from the registry", async () => {
+    const [, user] = await ethers.getSigners();
+    await expect(registryInstance.connect(user).removeContract(mockPool.address)).to.be.revertedWith(
+      "NOT_AUTHORIZED()",
+    );
+  });
+
+  it("reverts if the admin tries to remove the a non-existant contract from the registry", async () => {
+    await expect(registryInstance.removeContract(mockPool.address)).to.be.revertedWith("POOL_DOES_NOT_EXIST()");
+  });
+
+  it("admin is able to remove a contract from the registry", async () => {
+    const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
+    const [deployer] = await ethers.getSigners();
+    const mockDeployer = new MockPool__factory(deployer);
+    const newPool = await mockDeployer.deploy();
+    await registryInstance.addContract([mockPool.address, newPool.address]);
+    await registryInstance.removeContract(newPool.address);
+    const status = await registryInstance.poolStatus(newPool.address);
+    assert(!status);
+    const removedPoolIndexValue = await registryInstance.pools(1);
+    assert(removedPoolIndexValue == ZERO_ADDRESS);
+  });
 });
