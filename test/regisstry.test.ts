@@ -16,7 +16,7 @@ describe("Registry Tests", () => {
     const [deployer] = await ethers.getSigners();
 
     const registryDeployer = new Registry__factory(deployer);
-    registryInstance = await registryDeployer.deploy();
+    registryInstance = await registryDeployer.deploy(deployer.address);
 
     const mockDeployer = new MockPool__factory(deployer);
     mockPool = await mockDeployer.deploy();
