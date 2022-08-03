@@ -44,10 +44,10 @@ contract Registry is AccessControl {
     /**
     @dev Constructor granting admin role
     */
-    constructor() {
+    constructor(address _admin) {
         _setRoleAdmin(ADMIN_ROLE, ADMIN_ROLE);
         _setRoleAdmin(OPERATOR_ROLE, ADMIN_ROLE);
-        _grantRole(ADMIN_ROLE, msg.sender);
+        _grantRole(ADMIN_ROLE, _admin);
     }
 
     /**
