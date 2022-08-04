@@ -1,10 +1,10 @@
 {
-  "name": "@prb/hardhat-template",
-  "description": "Hardhat-based template for developing Solidity smart contracts",
+  "name": "@goodghosting-registry",
+  "description": "Registry Smart Contract to keep track of all deployed GoodGhosting games",
   "version": "1.0.0",
   "author": {
-    "name": "Paul Razvan Berg",
-    "url": "https://github.com/paulrberg"
+    "name": "GoodGhosting",
+    "url": "https://github.com/Good-Ghosting"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
