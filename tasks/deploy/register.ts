@@ -1,9 +1,5 @@
 import type { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
-import { ethers } from "hardhat";
 import { task } from "hardhat/config";
-
-import type { Registry } from "../../src/types/contracts/Registry";
-import type { Registry__factory } from "../../src/types/factories/contracts/Registry__factory";
 
 task("deploy:Registry").setAction(async function (_, { ethers }) {
   const admin = "0xCe17fFE0576fBB031aa27225aE05f7384f44bbc5";
