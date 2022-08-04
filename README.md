@@ -42,4 +42,8 @@ Start by setting the `MNEMONIC` & `INFURA_API_KEY` in .env & set [default networ
 ## Celo
 Start by setting the `MNEMONIC` in .env & set [default network](https://github.com/Good-Ghosting/goodghosting-registry/blob/main/hardhat.config.ts#L59) as `celo` in hardhat config, then run `yarn deploy`
 
+### Deployment Logs
+You'll see something like this
+`Registry deployed to:  registry_address`
+
 
