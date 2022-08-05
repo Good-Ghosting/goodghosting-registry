@@ -46,4 +46,10 @@ Start by setting the `MNEMONIC` in .env & set [default network](https://github.c
 You'll see something like this
 `Registry deployed to:  registry_address`
 
+# Deployed Contracts
+## Polygon
+Registry Contract Address: [0xd7e62b91bf2ce36f543d227159fb775450ac1617](https://polygonscan.com/address/0xd7e62b91bf2ce36f543d227159fb775450ac1617)
+
+
+## Celo
 
