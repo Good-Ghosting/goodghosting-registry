@@ -2,6 +2,11 @@
 
 A smart contract that basically keeps track of all deployed goodghosting pools on polygon & celo.
 
+## Deployed Registries (contracts deployed to mainnets)
+- Polygon Registry: [0xd7e62b91bf2ce36f543d227159fb775450ac1617](https://polygonscan.com/address/0xd7e62b91bf2ce36f543d227159fb775450ac1617)
+- Celo Registry: 
+
+
 # Development
 
 ## Setup
@@ -45,11 +50,4 @@ Start by setting the `MNEMONIC` in .env & set [default network](https://github.c
 ### Deployment Logs
 You'll see something like this
 `Registry deployed to:  registry_address`
-
-# Deployed Contracts
-## Polygon
-Registry Contract Address: [0xd7e62b91bf2ce36f543d227159fb775450ac1617](https://polygonscan.com/address/0xd7e62b91bf2ce36f543d227159fb775450ac1617)
-
-
-## Celo
 
