@@ -1108,7 +1108,7 @@ __metadata:
     "@nomicfoundation/hardhat-toolbox": ^1.0.2
     "@nomiclabs/hardhat-ethers": ^2.1.0
     "@nomiclabs/hardhat-etherscan": ^3.1.0
-    "@openzeppelin/contracts": ^4.7.2
+    "@openzeppelin/contracts": ^4.8.3
     "@trivago/prettier-plugin-sort-imports": ^3.3.0
     "@typechain/ethers-v5": ^10.1.0
     "@typechain/hardhat": ^6.1.2
@@ -1396,10 +1396,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@openzeppelin/contracts@npm:^4.7.2":
-  version: 4.7.2
-  resolution: "@openzeppelin/contracts@npm:4.7.2"
-  checksum: f02f2b44cdec46bafe1b608b495b6e2dc161ae4a3f308ba9921787cb77b8b877232839047b12f03b4d0fee9ca9208887fd5b9e7bdbf9a8c4f01021b1f1181233
+"@openzeppelin/contracts@npm:^4.8.3":
+  version: 4.8.3
+  resolution: "@openzeppelin/contracts@npm:4.8.3"
+  checksum: aea130d38d46840c5cbe3adbaa9a7ac645e4bd66ad3f3baf2fa78588c408d1a686170b3408c9e2e5e05530fba22ecdc00d7efb6b27852a8b29f91accbc0af255
   languageName: node
   linkType: hard
 
