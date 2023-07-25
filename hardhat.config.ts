@@ -30,6 +30,8 @@ const chainIds = {
   "polygon-mainnet": 137,
   "polygon-mumbai": 80001,
   rinkeby: 4,
+  base: 8453,
+  "base-goerli": 84531,
 };
 
 function getChainConfig(chain: keyof typeof chainIds): NetworkUserConfig {
@@ -40,6 +42,12 @@ function getChainConfig(chain: keyof typeof chainIds): NetworkUserConfig {
       break;
     case "bsc":
       jsonRpcUrl = "https://bsc-dataseed1.binance.org";
+      break;
+    case "base":
+      jsonRpcUrl = "https://developer-access-mainnet.base.org/";
+      break;
+    case "base-goerli":
+      jsonRpcUrl = "https://goerli.base.org/";
       break;
     default:
       jsonRpcUrl = "https://" + chain + ".infura.io/v3/" + infuraApiKey;
@@ -52,6 +60,7 @@ function getChainConfig(chain: keyof typeof chainIds): NetworkUserConfig {
     },
     chainId: chainIds[chain],
     url: jsonRpcUrl,
+    // gasPrice: 1000000000, // 1Gwei - set/update gasPrice in case of error "ProviderError: transaction underpriced"
   };
 }
 
@@ -67,7 +76,27 @@ const config: HardhatUserConfig = {
       polygon: process.env.POLYGONSCAN_API_KEY || "",
       polygonMumbai: process.env.POLYGONSCAN_API_KEY || "",
       rinkeby: process.env.ETHERSCAN_API_KEY || "",
+      "base-goerli": "PLACEHOLDER_STRING", // Base Goerli does not require api key at the moment
+      base: process.env.BASESCAN_API_KEY || "",
     },
+    customChains: [
+      {
+        network: "base-goerli",
+        chainId: 84531,
+        urls: {
+          apiURL: "https://api-goerli.basescan.org/api",
+          browserURL: "https://goerli.basescan.org",
+        },
+      },
+      {
+        network: "base",
+        chainId: 8453,
+        urls: {
+          apiURL: "https://api.basescan.org/api",
+          browserURL: "https://basescan.org",
+        },
+      },
+    ],
   },
   gasReporter: {
     currency: "USD",
@@ -89,6 +118,8 @@ const config: HardhatUserConfig = {
     optimism: getChainConfig("optimism-mainnet"),
     "polygon-mainnet": getChainConfig("polygon-mainnet"),
     "polygon-mumbai": getChainConfig("polygon-mumbai"),
+    base: getChainConfig("base"),
+    "base-goerli": getChainConfig("base-goerli"),
     celo: {
       url: "https://forno.celo.org",
       accounts: {
