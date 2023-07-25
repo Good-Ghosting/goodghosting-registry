@@ -58,19 +58,19 @@ You should see a line similar to `const admin = "ADMIN_ADDRESS";`. Replace `ADMI
 
 ## Polygon
 
-Start by setting the `MNEMONIC` & `INFURA_API_KEY` in .env & set [default network](https://github.com/Good-Ghosting/goodghosting-registry/blob/main/hardhat.config.ts#L67) as `polygon-mainnet` in hardhat config, then run `yarn deploy`
+Start by setting the `MNEMONIC` & `INFURA_API_KEY` in .env & set [default network](https://github.com/Good-Ghosting/goodghosting-registry/blob/main/hardhat.config.ts#L68) as `polygon-mainnet` in hardhat config, then run `yarn deploy`
 
 ## Celo
 
-Start by setting the `MNEMONIC` in .env & set [default network](https://github.com/Good-Ghosting/goodghosting-registry/blob/main/hardhat.config.ts#L67) as `celo` in hardhat config, then run `yarn deploy`
+Start by setting the `MNEMONIC` in .env & set [default network](https://github.com/Good-Ghosting/goodghosting-registry/blob/main/hardhat.config.ts#L68) as `celo` in hardhat config, then run `yarn deploy`
 
 ## Base
 
-Start by setting the `MNEMONIC` in .env & set [default network](https://github.com/Good-Ghosting/goodghosting-registry/blob/main/hardhat.config.ts#L67) as `base` in hardhat config, then run `yarn deploy`
+Start by setting the `MNEMONIC` in .env & set [default network](https://github.com/Good-Ghosting/goodghosting-registry/blob/main/hardhat.config.ts#L68) as `base` in hardhat config, then run `yarn deploy`
 
-## BaseGoerli
+## Base Goerli
 
-Start by setting the `MNEMONIC` in .env & set [default network](https://github.com/Good-Ghosting/goodghosting-registry/blob/main/hardhat.config.ts#L67) as `baseGoerli` in hardhat config, then run `yarn deploy`
+Start by setting the `MNEMONIC` in .env & set [default network](https://github.com/Good-Ghosting/goodghosting-registry/blob/main/hardhat.config.ts#L68) as `base-goerli` in hardhat config, then run `yarn deploy`
 
 ### Deployment Logs
 
