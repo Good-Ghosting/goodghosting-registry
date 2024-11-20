@@ -1,8 +1,8 @@
 # GoodGhosting Registry
 
-A smart contract that basically keeps track of all deployed goodghosting pools on polygon & celo.
+A Registry that keeps track of all HaloFi Challenges (prev. GoodGhosting Pools) deployed.
 
-## Deployed Registries (contracts deployed to mainnets)
+## Deployed Registries
 
 - Polygon Registry: [0x3367c7211c80840194496185a31868325Dc43150](https://polygonscan.com/address/0x3367c7211c80840194496185a31868325Dc43150)
 - Celo Registry: [0x7a495c05d009D346C5Ec942ec49AC519dd7035D0](https://explorer.celo.org/address/0x7a495c05d009D346C5Ec942ec49AC519dd7035D0/transactions)
